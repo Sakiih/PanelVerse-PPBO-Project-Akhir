@@ -5,7 +5,7 @@ Kamu bertanggung jawab mengembangkan detail komik, daftar chapter, dan halaman p
 
 ## 1. Wajib membaca
 
-Baca `MASTER_PROJECT.md`. Periksa layout dan komponen Member 2 serta pola navigasi dari Member 3. Gunakan satu Laravel application yang sama.
+Baca `MASTER_PROJECT.md` dan `docs/TEAM_ONBOARDING.md`. Periksa layout dan komponen Member 2 serta pola navigasi dari Member 3. Gunakan Laravel foundation dan satu application yang sama; jangan membuat project baru.
 
 ## 2. Fitur
 
@@ -54,9 +54,9 @@ Gunakan Comic, Chapter, dan ChapterPage dari Member 5 serta route/controller/ser
 - Jangan membuat layout global baru.
 - Koordinasikan kebutuhan backend dengan Member 6 dan 7.
 
-## 5. Git
+## 5. Git dan Laravel foundation
 
-Branch: `feature/member-4-detail-reader`
+Gunakan clone repository PanelVerse yang sama dan foundation Laravel yang tersedia; jangan menjalankan `laravel new`, `composer create-project`, atau membuat repository terpisah. Gunakan `feature/member-4-detail-reader` berdasarkan `main` terbaru (perbarui dengan `git switch main` lalu `git pull --ff-only origin main` sebelum membuat feature branch). Push hanya ke branch tersebut. Jangan push/merge ke `main`, jangan membuat `final`, dan jangan membuka PR sebelum Member 1 membuatnya. Setelah `final` tersedia, target PR adalah `final`. Baca `docs/TEAM_ONBOARDING.md` untuk panduan lengkap.
 
 ## 6. Output
 

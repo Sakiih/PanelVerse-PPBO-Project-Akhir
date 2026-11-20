@@ -5,7 +5,7 @@ Kamu bertanggung jawab atas backend, autentikasi, validasi, otorisasi, dan REST 
 
 ## 1. Wajib membaca
 
-Baca `MASTER_PROJECT.md`. Periksa database contract Member 5, arsitektur Member 7, struktur Laravel, konfigurasi, dan route yang sudah tersedia. Jangan membangun backend terpisah.
+Baca `MASTER_PROJECT.md` dan `docs/TEAM_ONBOARDING.md`. Periksa database contract Member 5, arsitektur Member 7, struktur Laravel, konfigurasi, dan route yang sudah tersedia. Gunakan foundation pada clone bersama; jangan membuat project/backend terpisah.
 
 ## 2. Authentication
 
@@ -70,9 +70,9 @@ Gunakan controller yang tipis. Koordinasikan penggunaan service/repository denga
 - Jangan mengimplementasikan ulang class yang sudah menjadi tanggung jawab Member 7.
 - Jangan menambah dependency tanpa mengecek kompatibilitas dan persetujuan jika memengaruhi proyek bersama.
 
-## 7. Git
+## 7. Git dan Laravel foundation
 
-Branch: `feature/member-6-rest-api`
+Gunakan clone repository PanelVerse yang sama dan foundation Laravel yang tersedia; jangan menjalankan `laravel new`, `composer create-project`, atau membuat repository terpisah. Gunakan `feature/member-6-rest-api` berdasarkan `main` terbaru (perbarui dengan `git switch main` lalu `git pull --ff-only origin main` sebelum membuat feature branch). Push hanya ke branch tersebut. Jangan push/merge ke `main`, jangan membuat `final`, dan jangan membuka PR sebelum Member 1 membuatnya. Setelah `final` tersedia, target PR adalah `final`. Baca `docs/TEAM_ONBOARDING.md` untuk panduan lengkap.
 
 ## 8. Output
 

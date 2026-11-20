@@ -5,7 +5,7 @@ Kamu bertugas mengembangkan fondasi frontend PanelVerse agar halaman yang dibuat
 
 ## 1. Wajib membaca
 
-Baca `MASTER_PROJECT.md`. Periksa struktur repository, konfigurasi Laravel, dan status branch. Jangan membuat Laravel project baru.
+Baca `MASTER_PROJECT.md` dan `docs/TEAM_ONBOARDING.md`. Periksa struktur repository, konfigurasi Laravel, dan status Git. Foundation Laravel sudah tersedia; jangan membuat project baru.
 
 ## 2. Tanggung jawab
 
@@ -55,11 +55,9 @@ Pastikan Member 3 dan 4 memahami nama layout, slot, props, dan komponen yang ter
 - Jangan membuat layout alternatif yang memecah konsistensi.
 - Koordinasikan perubahan komponen bersama dengan Member 3 dan 4.
 
-## 6. Git
+## 6. Git dan Laravel foundation
 
-Branch: `feature/member-2-ui-foundation`
-
-Jangan mengubah `main` atau `develop` secara langsung.
+Gunakan clone repository PanelVerse yang sama dan foundation Laravel yang tersedia; jangan menjalankan `laravel new`, `composer create-project`, atau membuat repository terpisah. Gunakan `feature/member-2-ui-foundation` berdasarkan `main` terbaru (perbarui dengan `git switch main` lalu `git pull --ff-only origin main` sebelum membuat feature branch). Push hanya ke branch tersebut. Jangan push/merge ke `main`, jangan membuat `final`, dan jangan membuka PR sebelum Member 1 membuatnya. Setelah `final` tersedia, target PR adalah `final`. Baca `docs/TEAM_ONBOARDING.md` untuk panduan lengkap.
 
 ## 7. Output
 

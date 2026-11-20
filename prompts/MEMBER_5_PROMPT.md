@@ -5,7 +5,7 @@ Kamu bertanggung jawab terhadap fondasi database PanelVerse dan menjadi pemilik 
 
 ## 1. Wajib membaca
 
-Baca `MASTER_PROJECT.md`. Periksa struktur repository, migration, model, dan konfigurasi database yang sudah tersedia. Jangan membuat Laravel project baru.
+Baca `MASTER_PROJECT.md` dan `docs/TEAM_ONBOARDING.md`. Periksa struktur repository, migration, model, dan konfigurasi database yang sudah tersedia. Foundation Laravel sudah tersedia; jangan membuat project baru.
 
 ## 2. Tanggung jawab
 
@@ -66,9 +66,9 @@ Sertakan nama tabel, kolom, tipe data, key, relasi, nama model, dan relationship
 - Jangan membuat migration yang bertabrakan dengan migration anggota lain.
 - Jangan melakukan operasi destruktif terhadap database berisi data penting tanpa persetujuan.
 
-## 5. Git
+## 5. Git dan Laravel foundation
 
-Branch: `feature/member-5-database`
+Gunakan clone repository PanelVerse yang sama dan foundation Laravel yang tersedia; jangan menjalankan `laravel new`, `composer create-project`, atau membuat repository terpisah. Gunakan `feature/member-5-database` berdasarkan `main` terbaru (perbarui dengan `git switch main` lalu `git pull --ff-only origin main` sebelum membuat feature branch). Push hanya ke branch tersebut. Jangan push/merge ke `main`, jangan membuat `final`, dan jangan membuka PR sebelum Member 1 membuatnya. Setelah `final` tersedia, target PR adalah `final`. Baca `docs/TEAM_ONBOARDING.md` untuk panduan lengkap.
 
 ## 6. Output
 

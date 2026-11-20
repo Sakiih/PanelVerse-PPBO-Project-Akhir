@@ -1,59 +1,54 @@
-# PanelVerse — PBO Team Prompt Pack
+# PanelVerse
 
-Paket ini berisi dokumen induk dan tujuh prompt AI Agent untuk proyek Shinigami-inspired clone bernama **PanelVerse**.
+PanelVerse adalah platform web membaca manga, manhwa, dan manhua untuk proyek akhir mata kuliah Pemrograman Berorientasi Objek. Proyek ini terinspirasi oleh kebutuhan umum layanan baca komik, tetapi implementasi dan identitas visualnya dikembangkan sendiri.
 
-## Isi paket
+**Status:** Laravel foundation tersedia; pengembangan fitur tim dimulai melalui feature branches. Aplikasi ditujukan untuk penggunaan lokal dalam tugas kuliah, bukan deployment publik.
 
-- `MASTER_PROJECT.md` — sumber kebenaran bersama untuk tujuan, teknologi, fitur, PBO, SOLID, database, API, pembagian tim, dan workflow Git.
-- `prompts/MEMBER_1_PROMPT.md` sampai `prompts/MEMBER_7_PROMPT.md` — instruksi khusus untuk masing-masing anggota.
-- `docs/` — template dokumen yang akan diisi dan dipelihara selama pengembangan.
+**Repository:** [Sakiih/PanelVerse-PPBO-Project-Akhir](https://github.com/Sakiih/PanelVerse-PPBO-Project-Akhir)
 
-## Cara menggunakan
+## Teknologi
 
-1. Masukkan seluruh isi paket ke root repository PanelVerse.
-2. Pastikan `MASTER_PROJECT.md` berada tepat di root repository.
-3. Bagikan prompt sesuai nomor anggota. Jangan tertukar.
-4. Setiap anggota memberikan `MASTER_PROJECT.md` dan prompt khususnya kepada AI Agent.
-5. Setiap Agent harus memeriksa repository dan branch sebelum mengedit kode.
-6. Sepakati database contract, UI contract, API contract, dan OOP architecture sebelum pengembangan paralel terlalu jauh.
-7. Anggota bekerja pada feature branch masing-masing dan membuka Pull Request menuju `develop`.
-8. Member 1 melakukan review dan integrasi.
+- Laravel 13.43.0, PHP 8.3+, MySQL 8
+- Composer 2.10.3, Node.js 22, NPM
+- Blade, Tailwind CSS sesuai konfigurasi, JavaScript, Vite
+- REST API
+
+## Mulai secara lokal
+
+Lihat [panduan onboarding](docs/TEAM_ONBOARDING.md) untuk langkah Windows PowerShell yang lengkap. Ringkasnya: clone repository, jalankan `composer install`, buat `.env` lokal dan APP_KEY, siapkan database `panelverse`, jalankan migration, pasang dependency frontend dengan `npm ci`, build, lalu jalankan `php artisan serve`.
+
+```powershell
+git clone git@github.com:Sakiih/PanelVerse-PPBO-Project-Akhir.git
+Set-Location PanelVerse-PPBO-Project-Akhir
+composer install
+Copy-Item .env.example .env
+php artisan key:generate
+# Atur koneksi MySQL lokal pada .env, lalu:
+php artisan migrate
+npm ci
+npm run build
+php artisan serve
+```
+
+Jangan commit `.env` atau credential. Lihat [Git dan aturan kerja](docs/TEAM_ONBOARDING.md#git-onboarding) sebelum membuat branch.
+
+## Sumber konteks proyek
+
+- [MASTER_PROJECT.md](MASTER_PROJECT.md) — sumber kebenaran proyek, kontrak, tanggung jawab, dan alur integrasi.
+- [docs/TEAM_ONBOARDING.md](docs/TEAM_ONBOARDING.md) — setup, troubleshooting, dan Git untuk anggota.
+- [design/FIGMA_GUIDELINES.md](design/FIGMA_GUIDELINES.md) dan [design/ASSET_MANIFEST.md](design/ASSET_MANIFEST.md) — acuan implementasi visual dan inventaris referensi.
+- [CHANGELOG_TEMPLATE.md](CHANGELOG_TEMPLATE.md) — format catatan perubahan.
 
 ## Pembagian anggota
 
-| Anggota | Prompt | Tugas |
+| Anggota | Prompt | Tanggung jawab |
 |---|---|---|
-| 1 | `prompts/MEMBER_1_PROMPT.md` | Project Manager, Analyst & Integrator |
-| 2 | `prompts/MEMBER_2_PROMPT.md` | UI/UX & Blade Foundation |
-| 3 | `prompts/MEMBER_3_PROMPT.md` | Homepage, Catalog & Search |
-| 4 | `prompts/MEMBER_4_PROMPT.md` | Comic Detail, Chapter & Reader |
-| 5 | `prompts/MEMBER_5_PROMPT.md` | Database & Eloquent |
-| 6 | `prompts/MEMBER_6_PROMPT.md` | Backend, Authentication & REST API |
-| 7 | `prompts/MEMBER_7_PROMPT.md` | OOP Architect & SOLID |
+| 1 | [MEMBER_1_PROMPT.md](prompts/MEMBER_1_PROMPT.md) | Project Manager, System Analyst & Integrator |
+| 2 | [MEMBER_2_PROMPT.md](prompts/MEMBER_2_PROMPT.md) | UI/UX & Blade Foundation |
+| 3 | [MEMBER_3_PROMPT.md](prompts/MEMBER_3_PROMPT.md) | Homepage, Comic Catalog & Search |
+| 4 | [MEMBER_4_PROMPT.md](prompts/MEMBER_4_PROMPT.md) | Comic Detail, Chapter & Reader |
+| 5 | [MEMBER_5_PROMPT.md](prompts/MEMBER_5_PROMPT.md) | Database Architect & Eloquent |
+| 6 | [MEMBER_6_PROMPT.md](prompts/MEMBER_6_PROMPT.md) | Backend, Authentication & REST API |
+| 7 | [MEMBER_7_PROMPT.md](prompts/MEMBER_7_PROMPT.md) | OOP Architect & SOLID |
 
-## Catatan integrasi penting
-
-Pembagian tugas membagi **tanggung jawab**, bukan membagi aplikasi menjadi tujuh project. Semua anggota harus bekerja di repository dan Laravel application yang sama.
-
-Sebelum fitur dikembangkan secara penuh, tim perlu mengesahkan:
-
-- ERD dan nama tabel/kolom dari Member 5.
-- Layout dan nama Blade components dari Member 2.
-- Endpoint, autentikasi, dan format API dari Member 6.
-- Kontrak interface, service, repository, dan dependency injection dari Member 7.
-
-MASTER_PROJECT adalah rancangan awal. Keputusan final yang telah disetujui tim harus dicatat kembali di dokumen induk agar semua anggota memakai versi kontrak yang sama.
-
-## Git branches
-
-- `main`: versi stabil.
-- `develop`: integrasi.
-- `feature/member-1-project-management`
-- `feature/member-2-ui-foundation`
-- `feature/member-3-homepage-catalog`
-- `feature/member-4-detail-reader`
-- `feature/member-5-database`
-- `feature/member-6-rest-api`
-- `feature/member-7-oop-architecture`
-
-Jangan commit `.env`, token, password, atau kredensial ke repository.
+Semua anggota menggunakan repository dan Laravel application yang sama. Pull Request fitur ditargetkan ke `final` setelah Member 1 membuat branch tersebut; jangan membuka PR menuju `main`.

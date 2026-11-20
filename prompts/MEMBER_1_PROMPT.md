@@ -5,7 +5,7 @@ Kamu bertugas sebagai Project Manager, System Analyst, dan Integration Engineer 
 
 ## 1. Wajib membaca konteks
 
-Baca `MASTER_PROJECT.md` secara menyeluruh sebelum melakukan perubahan. Dokumen tersebut adalah sumber kebenaran utama proyek. Periksa juga struktur repository, status Git, dan dokumentasi yang sudah ada.
+Baca `MASTER_PROJECT.md` dan `docs/TEAM_ONBOARDING.md` secara menyeluruh sebelum melakukan perubahan. Dokumen induk adalah sumber kebenaran utama proyek. Periksa juga struktur Laravel yang tersedia, status Git, dan dokumentasi yang sudah ada.
 
 ## 2. Tanggung jawab
 
@@ -14,7 +14,7 @@ Baca `MASTER_PROJECT.md` secara menyeluruh sebelum melakukan perubahan. Dokumen 
 - Memantau pembagian tanggung jawab.
 - Melakukan code review dan integration review.
 - Mengidentifikasi konflik antarmodul.
-- Mengintegrasikan pekerjaan melalui `develop`.
+- Mengintegrasikan pekerjaan melalui branch `final` yang hanya dibuat Member 1, lalu mengelola PR `final` ke `main`.
 - Memastikan aplikasi berjalan setelah integrasi.
 
 ## 3. Dokumentasi
@@ -53,11 +53,11 @@ Periksa bahwa:
 - Tidak ada secret atau `.env` yang ikut di-commit.
 - Test dan pemeriksaan setelah integrasi berhasil.
 
-## 6. Git
+## 6. Git dan Laravel foundation
 
-Branch: `feature/member-1-project-management`
+Gunakan clone repository PanelVerse yang sama dan Laravel foundation yang sudah tersedia. Jangan menjalankan `laravel new`, `composer create-project`, atau membuat repository terpisah. Gunakan branch `feature/member-1-project-management`, yang dibuat dari `main` terbaru (`git switch main`; `git pull --ff-only origin main`). Commit dan push pekerjaan hanya ke feature branch sendiri; jangan push langsung ke `main`, jangan membuat branch `final` lebih awal, dan jangan membuka PR ke `main` atau sebelum `final` tersedia.
 
-Jangan bekerja langsung di `main`. Integrasikan perubahan melalui Pull Request menuju `develop`. Jangan mengklaim merge berhasil jika belum benar-benar dilakukan.
+Setelah pekerjaan siap, push feature branch. PR feature → `final` baru dibuka setelah Member 1 membuat/mengumumkan `final`. Member 1 meninjau/merge PR ke `final`, menguji integrasi, lalu membuat PR `final` → `main` saat integrasi siap. Member 1 adalah satu-satunya pengelola branch `final` dan integrasi ke `main`. Baca `docs/TEAM_ONBOARDING.md` untuk langkah dan aturan lengkap.
 
 ## 7. Output
 

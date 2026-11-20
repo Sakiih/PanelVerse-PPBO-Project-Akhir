@@ -35,8 +35,8 @@ Fokus proyek bukan hanya menghasilkan aplikasi yang berfungsi, tetapi juga mener
 
 | Teknologi | Penggunaan |
 |---|---|
-| Laravel 13 | Backend framework |
-| PHP | Bahasa pemrograman |
+| Laravel 13.43.0 | Foundation framework yang tersedia di repository |
+| PHP 8.3+ | Bahasa pemrograman |
 | MySQL 8 | Database |
 | Eloquent ORM | Interaksi database |
 | Blade | Server-rendered frontend |
@@ -50,6 +50,12 @@ Fokus proyek bukan hanya menghasilkan aplikasi yang berfungsi, tetapi juga mener
 | Postman / EchoAPI | Pengujian API |
 
 Gunakan versi dependency yang kompatibel dengan Laravel 13 dan versi PHP yang dipasang pada komputer tim. Jangan menambah framework atau mengganti teknologi inti tanpa persetujuan tim.
+
+## 3.1 Laravel Foundation
+
+Repository ini sudah berisi satu Laravel application foundation. Gunakan `artisan`, `composer.json`, `composer.lock`, `package.json`, dan `package-lock.json` yang tersedia. Jangan menjalankan `laravel new`, `composer create-project`, atau membuat repository/project Laravel kedua. Foundation saat ini memuat migration dasar Laravel untuk users, cache, dan jobs; fitur domain dan migration tambahannya dikerjakan sesuai kepemilikan kontrak tim.
+
+Versi runtime yang tercatat saat panduan ini disusun: Laravel 13.43.0, PHP 8.3.36, Composer 2.10.3, Node.js 22.23.4, NPM 10.9.9. Dependency dikunci oleh `composer.lock` dan `package-lock.json`; jangan memperbarui lockfile tanpa alasan dan koordinasi.
 
 ## 4. Core Features
 
@@ -200,8 +206,8 @@ Aturan integrasi:
 4. Jangan mengubah nama tabel, kolom, model, atau relationship tanpa koordinasi.
 5. Jangan membuat ulang file yang dimiliki anggota lain.
 6. Gunakan namespace, naming, formatting, dan pola response yang konsisten.
-7. Sebelum bekerja, perbarui branch dari `develop` sesuai prosedur tim.
-8. Gunakan Pull Request menuju `develop`.
+7. Sebelum bekerja, perbarui `main` terbaru lalu buat/beralih ke feature branch resmi anggota.
+8. Push pekerjaan ke feature branch masing-masing. Setelah Member 1 membuat `final`, ajukan Pull Request menuju `final`.
 9. Sertakan ringkasan file yang dibuat/diubah, cara pengujian, dan kebutuhan integrasi.
 10. Jika terjadi konflik, koordinasikan; jangan menghapus pekerjaan anggota lain untuk menyelesaikan konflik.
 11. Hindari mengedit file bersama pada waktu bersamaan tanpa koordinasi.
@@ -217,14 +223,11 @@ Aturan integrasi:
 | OOP architecture | Member 7 bersama Member 1 | Members 5, 6 |
 | Integration | Member 1 | Semua anggota |
 
-## 12. Git Workflow
+## 12. Git Branch Strategy
 
-Branch utama:
+Tim **tidak menggunakan branch `develop`**. `main` adalah baseline bersama dan versi utama repository. Setiap anggota bekerja pada feature branch yang ditetapkan. `final` adalah branch integrasi sementara yang hanya dibuat dan dikelola Member 1 ketika seluruh pekerjaan siap diintegrasikan.
 
-- `main`: versi stabil yang siap didemonstrasikan.
-- `develop`: branch integrasi seluruh fitur.
-
-Feature branches:
+Feature branches resmi:
 
 - `feature/member-1-project-management`
 - `feature/member-2-ui-foundation`
@@ -234,19 +237,20 @@ Feature branches:
 - `feature/member-6-rest-api`
 - `feature/member-7-oop-architecture`
 
-Alur kerja:
+Workflow anggota:
 
-1. Pastikan branch `develop` terbaru.
-2. Buat atau perbarui feature branch masing-masing.
-3. Kerjakan hanya lingkup tugas yang disepakati.
-4. Jalankan pemeriksaan dan pengujian yang relevan.
-5. Commit dengan pesan yang menjelaskan perubahan.
-6. Push feature branch ke GitHub.
-7. Buat Pull Request dari feature branch menuju `develop`.
-8. Berikan deskripsi, screenshot bila relevan, hasil test, dan catatan integrasi.
-9. Member 1 melakukan review; pemilik kontrak terkait ikut memeriksa bila perubahan menyentuh kontraknya.
-10. Merge hanya setelah konflik dan pemeriksaan diselesaikan.
-11. Setelah `develop` stabil dan diuji, integrasikan ke `main`.
+1. Clone repository yang sama. Clone access tidak otomatis memberikan hak push; pemilik repository harus memberikan role Write.
+2. `git switch main`, lalu `git pull --ff-only origin main` sebelum memulai pekerjaan.
+3. Buat atau gunakan feature branch resmi anggota berdasarkan `main` terbaru.
+4. Kerjakan hanya lingkup dan kontrak yang disepakati.
+5. Periksa perubahan, jalankan pemeriksaan relevan, lalu commit.
+6. Push hanya ke feature branch milik sendiri. Dilarang push langsung ke `main`.
+7. Sebelum Member 1 membuat `final`, anggota belum perlu membuka Pull Request. Jangan membuka PR ke `main`.
+8. Setelah Member 1 mengumumkan branch `final`, buka PR feature branch → `final` dengan ringkasan, hasil pemeriksaan, screenshot/API evidence bila relevan, dan catatan integrasi.
+9. Member 1 melakukan review/merge PR ke `final`; pemilik kontrak terkait ikut meninjau perubahan yang menyentuh kontraknya.
+10. Setelah integrasi diuji, Member 1 membuat PR `final` → `main` dan mengelola merge ke `main`.
+
+Anggota selain Member 1 dilarang membuat branch `final` atau menggabungkan pekerjaan ke `main`. Jangan membuat branch `develop`.
 
 Contoh commit:
 
@@ -270,7 +274,7 @@ Pekerjaan dinyatakan selesai apabila:
 - API memberikan status dan response yang sesuai jika relevan.
 - Pengujian relevan telah dijalankan dan hasilnya dicatat.
 - Perubahan sudah di-commit dan di-push.
-- Pull Request dibuat menuju `develop`.
+- Pull Request fitur ditargetkan ke `final` setelah branch tersebut dibuat Member 1; PR `final` → `main` dikelola Member 1.
 - Dokumentasi pekerjaan diperbarui.
 
 ## 14. AI Agent Rules
@@ -307,3 +311,29 @@ Jika menemukan kebutuhan yang bertentangan dengan kontrak bersama, hentikan peru
 4. Do not create a design that conflicts with a relevant reference without Member 1's approval. When a reference is missing or ambiguous, coordinate the decision with Member 1 and Member 2.
 5. Communicate design changes to the team and record shared decisions in this document or the design guidance as appropriate.
 6. Do not delete original assets without approval. Organized copies do not replace the originals.
+
+## 17. Local Development Setup
+
+Gunakan PHP 8.3+, Composer, Node.js 22/NPM, dan MySQL 8 lokal. Panduan setup Windows PowerShell, konfigurasi `.env`, database, migration, build, server, troubleshooting, dan penjelasan konsep Git tersedia di `docs/TEAM_ONBOARDING.md`. Jangan membagikan `.env` atau APP_KEY. Jangan menggunakan `migrate:fresh` tanpa persetujuan karena perintah itu menghapus tabel dan data.
+
+## 18. Team Onboarding
+
+Setiap anggota wajib membaca dokumen ini dan prompt khususnya. `docs/TEAM_ONBOARDING.md` menjelaskan cara clone, menyiapkan foundation lokal, menjalankan aplikasi, dan menggunakan Git. Setiap AI Agent juga harus menerima `MASTER_PROJECT.md`, prompt anggota terkait, dan panduan onboarding. Untuk pekerjaan UI, baca `design/FIGMA_GUIDELINES.md`; baca `design/ASSET_MANIFEST.md` saat memakai referensi/aset.
+
+## 19. Collaboration Rules
+
+1. Satu repository dan satu Laravel application untuk seluruh anggota.
+2. Pertahankan pembagian tanggung jawab di Bagian 10; perubahan lingkup memerlukan persetujuan Member 1.
+3. Member 5 memiliki database contract; Member 7 arsitektur OOP/SOLID; Member 6 backend/API yang mengikuti keduanya; Member 2 Blade foundation; Members 3 dan 4 menggunakan foundation itu.
+4. Jangan menetapkan kontrak entitas, tabel, route, interface, atau komponen yang bertentangan. Usulkan dan koordinasikan keputusan yang belum ditetapkan kepada Member 1 dan pemilik kontrak terkait sebelum implementasi dependen.
+5. Jangan mengambil alih atau menimpa pekerjaan anggota lain. Komunikasikan perubahan yang memengaruhi tim.
+6. Jangan commit `.env`, credential, token, atau file rahasia. Jangan membagikan rahasia di chat atau PR.
+7. Jangan push langsung ke `main`; hanya Member 1 membuat/mengelola `final` dan integrasi menuju `main`.
+
+## 20. Integration Process
+
+1. Setiap anggota push hasil ke feature branch resminya dan melaporkan kesiapan kepada Member 1. PR ditunda sampai `final` tersedia.
+2. Setelah pekerjaan siap, Member 1 memastikan `main` terbaru, membuat `final` berdasarkan `main`, lalu mengumumkan bahwa PR dapat dibuka.
+3. Setiap anggota membuka PR feature → `final`; Member 1 meninjau dan menggabungkan setelah konflik, kontrak, dokumentasi, dan pemeriksaan relevan ditangani.
+4. Member 1 menguji hasil integrasi di `final` dan mencatat perubahan/masalah.
+5. Setelah siap, Member 1 membuka PR `final` → `main`, menyelesaikan review, lalu menggabungkan integrasi. Anggota lain tidak membuat PR menuju `main` dan tidak menggabungkan ke `main`.

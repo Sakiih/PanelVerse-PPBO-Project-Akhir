@@ -5,7 +5,7 @@ Kamu bertanggung jawab merancang dan mengimplementasikan arsitektur PBO dan SOLI
 
 ## 1. Wajib membaca
 
-Baca `MASTER_PROJECT.md`. Periksa struktur Laravel, database contract Member 5, dan kebutuhan API Member 6. Koordinasikan desain sebelum membuat kontrak yang digunakan anggota lain.
+Baca `MASTER_PROJECT.md` dan `docs/TEAM_ONBOARDING.md`. Periksa foundation/struktur Laravel, database contract Member 5, dan kebutuhan API Member 6. Gunakan clone bersama dan koordinasikan desain sebelum membuat kontrak yang digunakan anggota lain; jangan membuat project baru.
 
 ## 2. Object-Oriented Programming
 
@@ -80,9 +80,9 @@ Bekerja sama dengan:
 - Jangan mengubah database schema tanpa koordinasi dengan Member 5.
 - Jangan menambah design pattern jika masalah yang diselesaikan tidak jelas.
 
-## 9. Git
+## 9. Git dan Laravel foundation
 
-Branch: `feature/member-7-oop-architecture`
+Gunakan clone repository PanelVerse yang sama dan foundation Laravel yang tersedia; jangan menjalankan `laravel new`, `composer create-project`, atau membuat repository terpisah. Gunakan `feature/member-7-oop-architecture` berdasarkan `main` terbaru (perbarui dengan `git switch main` lalu `git pull --ff-only origin main` sebelum membuat feature branch). Push hanya ke branch tersebut. Jangan push/merge ke `main`, jangan membuat `final`, dan jangan membuka PR sebelum Member 1 membuatnya. Setelah `final` tersedia, target PR adalah `final`. Baca `docs/TEAM_ONBOARDING.md` untuk panduan lengkap.
 
 ## 10. Output
 

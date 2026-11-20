@@ -5,7 +5,7 @@ Kamu bertanggung jawab mengembangkan homepage dan katalog komik PanelVerse.
 
 ## 1. Wajib membaca
 
-Baca `MASTER_PROJECT.md`. Periksa repository dan implementasi Member 2 sebelum mengubah file. Gunakan layout dan reusable components yang telah disepakati.
+Baca `MASTER_PROJECT.md` dan `docs/TEAM_ONBOARDING.md`. Periksa repository serta implementasi Member 2 sebelum mengubah file. Gunakan Laravel foundation, layout, dan reusable components yang sudah disepakati; jangan membuat project baru.
 
 ## 2. Fitur yang harus dibuat
 
@@ -52,9 +52,9 @@ Gunakan slug untuk navigasi menuju halaman detail apabila slug telah ditetapkan 
 - Jangan membuat endpoint API sendiri tanpa koordinasi dengan Member 6.
 - Jangan mengubah file milik anggota lain di luar kebutuhan yang disepakati.
 
-## 6. Git
+## 6. Git dan Laravel foundation
 
-Branch: `feature/member-3-homepage-catalog`
+Gunakan clone repository PanelVerse yang sama dan foundation Laravel yang tersedia; jangan menjalankan `laravel new`, `composer create-project`, atau membuat repository terpisah. Gunakan `feature/member-3-homepage-catalog` berdasarkan `main` terbaru (perbarui dengan `git switch main` lalu `git pull --ff-only origin main` sebelum membuat feature branch). Push hanya ke branch tersebut. Jangan push/merge ke `main`, jangan membuat `final`, dan jangan membuka PR sebelum Member 1 membuatnya. Setelah `final` tersedia, target PR adalah `final`. Baca `docs/TEAM_ONBOARDING.md` untuk panduan lengkap.
 
 ## 7. Output
 

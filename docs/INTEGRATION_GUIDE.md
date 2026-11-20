@@ -1,20 +1,24 @@
-# PanelVerse — Integration Guide
+# PanelVerse Integration Guide
 
-**Pemilik:** Member 1  
-**Status:** Living document — perbarui setiap ada keputusan atau integrasi penting.
+**Owner:** Member 1
+**Status:** Living document — update after each integration decision.
+**Workflow source of truth:** `MASTER_PROJECT.md` and `docs/TEAM_ONBOARDING.md`.
 
-## 1. Aturan dasar
+## 1. Rules
 
-- Satu repository dan satu Laravel application.
-- `main` untuk versi stabil.
-- `develop` untuk integrasi.
-- Setiap anggota bekerja pada feature branch miliknya.
-- Semua feature branch membuka Pull Request ke `develop`.
-- Jangan commit `.env`, token, password, atau kredensial.
+- One GitHub repository and one Laravel application.
+- `main` is the shared baseline and primary branch.
+- Each member works on the assigned feature branch based on latest `main`.
+- Members may push their own feature branches; no direct push to `main`.
+- Member 1 alone creates and manages the `final` integration branch when feature work is ready.
+- No feature Pull Request is needed until `final` exists. Then each feature PR targets `final`, never `main`.
+- Member 1 reviews/merges feature PRs into `final`, verifies integration, and manages a PR from `final` to `main`.
+- Do not create a `develop` branch or a separate Laravel/repository per module.
+- Never commit `.env`, tokens, passwords, or credentials.
 
-## 2. Branch anggota
+## 2. Member feature branches
 
-| Anggota | Branch |
+| Member | Branch |
 |---|---|
 | 1 | `feature/member-1-project-management` |
 | 2 | `feature/member-2-ui-foundation` |
@@ -24,33 +28,42 @@
 | 6 | `feature/member-6-rest-api` |
 | 7 | `feature/member-7-oop-architecture` |
 
-## 3. PR checklist
+## 3. Integration sequence
 
-- [ ] Tujuan perubahan jelas.
-- [ ] Perubahan berada dalam lingkup tugas.
-- [ ] Tidak ada secret atau `.env`.
-- [ ] Tidak ada file duplikat atau perubahan tidak terkait.
-- [ ] Migration dan schema kompatibel.
-- [ ] Test/pemeriksaan relevan dijalankan.
-- [ ] Screenshot/API evidence tersedia bila relevan.
-- [ ] Dokumentasi diperbarui.
-- [ ] Dampak ke anggota lain dijelaskan.
+1. Before work, update local `main` with `git pull --ff-only origin main`; create or switch to the assigned feature branch.
+2. Keep changes within the assigned scope. Coordinate changes that affect another member's files or shared contracts.
+3. Review staged files, commit, and push only to the assigned feature branch.
+4. Report branch readiness to Member 1. Wait for Member 1 to create and announce `final` before opening a PR.
+5. Open a PR from the feature branch to `final`; include purpose, files, checks actually run, integration needs, and screenshots/API evidence when relevant.
+6. Member 1 reviews the change; the owner of a touched contract participates in review. Resolve conflicts without discarding another member's work.
+7. Member 1 merges approved feature PRs into `final`, tests/inspects the integrated application, and records issues.
+8. When integration is ready, Member 1 opens and manages a PR from `final` to `main`. No feature PR targets `main`.
 
-## 4. Integration log
+## 4. Pull Request checklist
 
-| Tanggal | PR / Branch | Ringkasan | Reviewer | Status |
+- [ ] Target branch is `final` (for feature work) or `main` (only Member 1's final integration PR).
+- [ ] Purpose is clear and changes match the member's scope.
+- [ ] No `.env`, secret, credential, or unrelated file is included.
+- [ ] No duplicate/conflicting migration, route, contract, or component was introduced.
+- [ ] Relevant checks/tests were run and reported truthfully.
+- [ ] Documentation and integration requirements are described.
+- [ ] Screenshot/API evidence is included when useful.
+
+## 5. Integration log
+
+| Date | PR / Branch | Summary | Reviewer | Status |
 |---|---|---|---|---|
 | | | | | Pending |
 
-## 5. Keputusan lintas anggota
+## 6. Cross-member decisions
 
-| Tanggal | Topik | Keputusan | Disetujui oleh |
+| Date | Topic | Decision | Approved by |
 |---|---|---|---|
 | | Database contract | | |
 | | Blade component contract | | |
 | | API contract | | |
 | | OOP architecture | | |
 
-## 6. Pengujian setelah integrasi
+## 7. Checks after integration
 
-Catat command yang benar-benar dijalankan, environment, hasil, dan masalah yang ditemukan. Jangan menandai test lulus jika belum dijalankan.
+Record the command actually run, environment, result, and any issue. Do not mark a test as passed if it was not run. Keep `final` as the integration candidate until Member 1's PR to `main` is approved and merged.
