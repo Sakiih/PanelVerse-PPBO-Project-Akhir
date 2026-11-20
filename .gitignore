@@ -42,3 +42,7 @@ id_ed25519
 .DS_Store
 Thumbs.db
 *.log
+
+# Local SQLite database files
+/database/*.sqlite
+/database/*.sqlite-*
