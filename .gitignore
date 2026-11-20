@@ -1,0 +1,44 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Environment and secrets
+/.env
+/.env.*
+!/.env.example
+/auth.json
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Laravel generated files
+/public/build/
+/public/hot
+/storage/*.key
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+/bootstrap/cache/*.php
+
+# PHPUnit
+/.phpunit.cache
+/.phpunit.result.cache
+
+# Local source assets and comic content
+/assets/
+/design/assets/images/comic-content/
+
+# Unverified legacy reader image copies only
+/design/references/reader/01-damn-reincarnation-reader.png
+/design/references/reader/02-extra-academy-reader.png
+/design/references/reader/03-extra-academy-reader-2.png
+/design/references/reader/04-extra-academy-reader-3.png
+/design/references/reader/05-extra-academy-reader-4.png
+
+# Operating system and logs
+.DS_Store
+Thumbs.db
+*.log
